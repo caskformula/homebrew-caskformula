@@ -5,12 +5,6 @@ class Inkscape < Formula
   mirror "https://mirrors.kernel.org/debian/pool/main/i/inkscape/inkscape_0.92.orig.tar.gz"
   sha256 "b8b4c159a00448d465384533e5a70d3f33e5f9c6b74c76ea5d636ddd6dd7ba56"
 
-  bottle do
-    sha256 "16d7547e6b69e6c39aaba1dc35429a09f202c1c80aa6c8858e2db9d43279fc46" => :sierra
-    sha256 "7fbf9abafaf5aad37041122e0f0b8ca110df282cd3efffc3adea73c45eee4014" => :el_capitan
-    sha256 "b46487ca8fc59b9c8dd861a48d1619f7a26bba37277babd1ec3a05a69366278b" => :yosemite
-  end
-
   head do
     url "lp:inkscape", :using => :bzr
   end
