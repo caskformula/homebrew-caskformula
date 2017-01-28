@@ -4,6 +4,7 @@ class Inkscape < Formula
   url "https://inkscape.org/gallery/item/10552/inkscape-0.92.0.tar.bz2"
   mirror "https://mirrors.kernel.org/debian/pool/main/i/inkscape/inkscape_0.92.orig.tar.gz"
   sha256 "b8b4c159a00448d465384533e5a70d3f33e5f9c6b74c76ea5d636ddd6dd7ba56"
+  revision 1
 
   head do
     url "lp:inkscape", :using => :bzr
