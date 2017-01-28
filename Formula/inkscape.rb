@@ -28,6 +28,7 @@ class Inkscape < Formula
   depends_on "little-cms"
   depends_on "pango"
   depends_on "popt"
+  depends_on "potrace"
 
   depends_on "gtkmm3" if build.with? "gtk3"
   depends_on "gdl" if build.with? "gtk3"
