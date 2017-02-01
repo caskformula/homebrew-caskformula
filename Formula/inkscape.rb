@@ -7,9 +7,9 @@ class Inkscape < Formula
   revision 2
 
   head do
-    url "lp:inkscape", :using => :bzr
+    url "lp:inkscape/0.92.x", :using => :bzr
   end
-
+  
   option "with-gtk3", "Build Inkscape with GTK+3 (Experimental)"
 
   depends_on "autoconf" => :build
