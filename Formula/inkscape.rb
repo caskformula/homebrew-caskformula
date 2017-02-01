@@ -7,9 +7,12 @@ class Inkscape < Formula
   revision 2
 
   head do
-    url "lp:inkscape/0.92.x", :using => :bzr
+    url "lp:inkscape", :using => :bzr
+    url "lp:inkscape/0.92.x", :using => :bzr if build.include? "branch-0.92"
   end
-  
+
+  option "branch-0.92", "When used with --HEAD, build from the 0.92.x branch"
+
   option "with-gtk3", "Build Inkscape with GTK+3 (Experimental)"
 
   depends_on "autoconf" => :build
