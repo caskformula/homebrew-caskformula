@@ -4,7 +4,7 @@ class Inkscape < Formula
   url "https://inkscape.org/gallery/item/10552/inkscape-0.92.0.tar.bz2"
   mirror "https://mirrors.kernel.org/debian/pool/main/i/inkscape/inkscape_0.92.0.orig.tar.bz2"
   sha256 "b8b4c159a00448d465384533e5a70d3f33e5f9c6b74c76ea5d636ddd6dd7ba56"
-  revision 1
+  revision 2
 
   head do
     url "lp:inkscape", :using => :bzr
@@ -18,7 +18,6 @@ class Inkscape < Formula
   depends_on "boost-build" => :build
   depends_on "intltool" => :build
   depends_on "pkg-config" => :build
-  depends_on "poppler" => :optional
   depends_on "bdw-gc"
   depends_on "boost"
   depends_on "cairomm"
@@ -29,6 +28,7 @@ class Inkscape < Formula
   depends_on "little-cms"
   depends_on "pango"
   depends_on "popt"
+  depends_on "poppler"
   depends_on "potrace"
 
   depends_on "gtkmm3" if build.with? "gtk3"
@@ -55,7 +55,6 @@ class Inkscape < Formula
       --enable-lcms
       --without-gnome-vfs
     ]
-    args << "--disable-poppler-cairo" if build.without? "poppler"
     args << "--enable-gtk3-experimental" if build.with? "gtk3"
 
     system "./autogen.sh"
