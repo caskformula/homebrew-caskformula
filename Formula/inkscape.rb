@@ -62,6 +62,7 @@ class Inkscape < Formula
 
     system "./autogen.sh"
     system "./configure", *args
+    system "make"
     system "make", "install"
   end
 
