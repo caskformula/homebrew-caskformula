@@ -6,8 +6,8 @@ class Inkscape < Formula
   sha256 "257405bf802de125f17d123638093a37db02ebe334d243cf9b0d8903f7c89005"
 
   head do
-    url "lp:inkscape", :using => :bzr
-    url "lp:inkscape/0.92.x", :using => :bzr if build.include? "branch-0.92"
+    url "https://gitlab.com/inkscape/inkscape.git", :using => :git
+    url "https://gitlab.com/inkscape/inkscape.git", :using => :git, :branch => "0.92.x" if build.include? "branch-0.92"
   end
 
   option "branch-0.92", "When used with --HEAD, build from the 0.92.x branch"
