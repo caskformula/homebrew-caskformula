@@ -27,6 +27,7 @@ class Inkscape < Formula
   depends_on "glibmm"
   depends_on "gsl"
   depends_on "hicolor-icon-theme"
+  depends_on "libsoup" # > 0.92.x
   depends_on "little-cms"
   depends_on "pango"
   depends_on "popt"
