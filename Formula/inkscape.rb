@@ -14,8 +14,8 @@ class Inkscape < Formula
 
   option "with-gtk3", "Build Inkscape with GTK+3 (Experimental)"
 
-  depends_on "autoconf" => :build
   depends_on "automake" => :build
+  depends_on "cmake" => :build
   depends_on "libtool" => :build
   depends_on "boost-build" => :build
   depends_on "intltool" => :build
@@ -50,18 +50,9 @@ class Inkscape < Formula
     ENV.cxx11
     ENV.append "LDFLAGS", "-liconv"
 
-    args = %W[
-      --prefix=#{prefix}
-      --disable-dependency-tracking
-      --disable-silent-rules
-      --disable-strict-build
-      --enable-lcms
-      --without-gnome-vfs
-    ]
-    args << "--enable-gtk3-experimental" if build.with? "gtk3"
-
-    system "./autogen.sh"
-    system "./configure", *args
+    system "mkdir", "build"
+    Dir.chdir("build")
+    system "cmake", "..", *std_cmake_args
     system "make"
     system "make", "install"
   end
