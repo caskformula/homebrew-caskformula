@@ -4,7 +4,7 @@ caskformula is a tap for providing [homebrew](http://brew.sh/) formulae for soft
 
 ## Inkscape
 
-### Install
+### Install
 
 ```bash
 brew install caskformula/caskformula/inkscape
