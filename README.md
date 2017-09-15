@@ -30,4 +30,4 @@ brew install caskformula/caskformula/inkscape --HEAD
 LANG=fr inkscape
 ```
 
-* Inkscape fails on launch with a critical error when using certain locales: `am`, `ar`, `de`, `doi`, `el`, `es`, `es_MX`, `hu`, `is`, `ja`, `ks@deva`, `lv`, `ru`, `sat`, `sat@deva`, `sk`, `sr`, `sr@latin`, `tr`, `uk`, `ur`
+* Inkscape fails on launch with a critical error when using certain locales: `ar`, `de`, `doi`, `el`, `es`, `es_MX`, `hu`, `is`, `ja`, `ks@deva`, `lv`, `ru`, `sat`, `sat@deva`, `sk`, `sr`, `sr@latin`, `tr`, `uk`, `ur`
