@@ -60,7 +60,7 @@ class Inkscape < Formula
 
     system "mkdir", "build"
     Dir.chdir("build")
-    system "cmake", "..", *std_cmake_args
+    system "cmake", "..", ("-DWITH_GTK3_EXPERIMENTAL=ON" if build.with? "gtk3"), *std_cmake_args
     system "make"
     system "make", "install"
   end
