@@ -1,9 +1,9 @@
 class Inkscape < Formula
   desc "Professional vector graphics editor"
   homepage "https://inkscape.org/"
-  url "https://launchpad.net/inkscape/0.92.x/0.92.2/+download/inkscape-0.92.2.tar.bz2"
-  mirror "https://mirrors.kernel.org/debian/pool/main/i/inkscape/inkscape_0.92.2.orig.tar.bz2"
-  sha256 "a628d0e04c254e9840947e6d866974f92c68ae31631a38b94d9b65e5cd84cfd3"
+  url "https://launchpad.net/inkscape/0.92.x/0.92.3/+download/inkscape-0.92.3.tar.bz2"
+  mirror "https://mirrors.kernel.org/debian/pool/main/i/inkscape/inkscape_0.92.3.orig.tar.bz2"
+  sha256 "063296c05a65d7a92a0f627485b66221487acfc64a24f712eb5237c4bd7816b2"
   revision 1
 
   head do
@@ -11,12 +11,12 @@ class Inkscape < Formula
     url "https://gitlab.com/inkscape/inkscape.git", :using => :git, :branch => "0.92.x" if build.include? "branch-0.92"
   end
 
-  stable do
-    patch do
-      url "https://gitlab.com/inkscape/inkscape/commit/93ccf03162cd2e46d962822d5507865f3451168c.diff"
-      sha256 "1f037cc29cee8e0c60ab4753d4151741c8170e4849129bac68fdc60925eb971d"
-    end
-  end
+  # stable do
+  #   patch do
+  #     url "https://gitlab.com/inkscape/inkscape/commit/93ccf03162cd2e46d962822d5507865f3451168c.diff"
+  #     sha256 "1f037cc29cee8e0c60ab4753d4151741c8170e4849129bac68fdc60925eb971d"
+  #   end
+  # end
 
   option "branch-0.92", "When used with --HEAD, build from the 0.92.x branch"
 
