@@ -1,33 +1,10 @@
-# caskformula
+This is a temporary fix for inkscape.
 
-caskformula is a tap for providing [homebrew](http://brew.sh/) formulae for software packaged as [casks](https://caskroom.github.io/).
+The fix on glibmm is from MacPorts:
+https://github.com/macports/macports-ports/commit/e864b2340be9ef003d8ff4aef92e7151d06287dd
+https://bugzilla.gnome.org/show_bug.cgi?id=795338
 
-## Inkscape
+Thanks Clemens Lang!
 
-### Install
 
-```bash
-brew install caskformula/caskformula/inkscape
-```
-
-* git 0.92.x branch
-
-```bash
-brew install caskformula/caskformula/inkscape --HEAD --branch-0.92
-```
-
-* git master branch
-
-```bash
-brew install caskformula/caskformula/inkscape --HEAD
-```
-
-### Known issues
-
-* Locale must me manually specified using the `LANG` environment variable. For example:
-
-```bash
-LANG=fr inkscape
-```
-
-* Inkscape fails on launch with a critical error when using certain locales: `ar`, `de`, `doi`, `el`, `es`, `es_MX`, `hu`, `is`, `ja`, `ks@deva`, `lv`, `ru`, `sat`, `sat@deva`, `sk`, `sr`, `sr@latin`, `tr`, `uk`, `ur`
+The fix on `const char *` is given in the `patch.diff`.
