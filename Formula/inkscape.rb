@@ -13,8 +13,10 @@ class Inkscape < Formula
 
   stable do
     patch do
-      url "https://gitlab.com/inkscape/inkscape/commit/93ccf03162cd2e46d962822d5507865f3451168c.diff"
-      sha256 "1f037cc29cee8e0c60ab4753d4151741c8170e4849129bac68fdc60925eb971d"
+      url "https://raw.githubusercontent.com/weikengchen/homebrew-caskformula/master/patch.diff"
+    end
+    patch do 
+      url "https://raw.githubusercontent.com/weikengchen/homebrew-caskformula/master/patch2.diff"
     end
   end
 
