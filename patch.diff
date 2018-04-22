@@ -51,7 +51,6 @@ index c1940b1..e311562 100644
 +#endif
          delete pdf_parser;
          delete builder;
-         g_free(docname);
 diff --git a/src/extension/internal/pdfinput/pdf-parser.cpp b/src/extension/internal/pdfinput/pdf-parser.cpp
 index 5ede59b..604b7f8 100644
 --- a/src/extension/internal/pdfinput/pdf-parser.cpp
@@ -593,7 +592,7 @@ index 5ede59b..604b7f8 100644
 @@ -2541,23 +2733,43 @@ void PdfParser::opXObject(Object args[], int /*numArgs*/)
    Object obj1, obj2, obj3, refObj;
  
-   const char *name = args[0].getName();
+   char *name = args[0].getName();
 +#if defined(POPPLER_NEW_OBJECT_API)
 +  if ((obj1 = res->lookupXObject(name)).isNull()) {
 +#else
