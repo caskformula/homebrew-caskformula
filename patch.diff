@@ -51,6 +51,7 @@ index c1940b1..e311562 100644
 +#endif
          delete pdf_parser;
          delete builder;
+         g_free(docname);
 diff --git a/src/extension/internal/pdfinput/pdf-parser.cpp b/src/extension/internal/pdfinput/pdf-parser.cpp
 index 5ede59b..604b7f8 100644
 --- a/src/extension/internal/pdfinput/pdf-parser.cpp
