@@ -1,7 +1,16 @@
 diff --git a/src/extension/internal/pdfinput/pdf-parser.cpp b/src/extension/internal/pdfinput/pdf-parser.cpp
-index 15bc2d746d..b68ad7e7a8 100644
+index 15bc2d746d..3e44a1b051 100644
 --- a/src/extension/internal/pdfinput/pdf-parser.cpp
 +++ b/src/extension/internal/pdfinput/pdf-parser.cpp
+@@ -2582,7 +2582,7 @@ void PdfParser::opShowSpaceText(Object args[], int /*numArgs*/)
+   }
+ }
+ 
+-void PdfParser::doShowText(GooString *s) {
++void PdfParser::doShowText(const GooString *s) {
+   GfxFont *font;
+   int wMode;
+   double riseX, riseY;
 @@ -2732,7 +2732,7 @@ void PdfParser::opXObject(Object args[], int /*numArgs*/)
  {
    Object obj1, obj2, obj3, refObj;
@@ -11,6 +20,25 @@ index 15bc2d746d..b68ad7e7a8 100644
  #if defined(POPPLER_NEW_OBJECT_API)
    if ((obj1 = res->lookupXObject(name)).isNull()) {
  #else
+diff --git a/src/extension/internal/pdfinput/pdf-parser.h b/src/extension/internal/pdfinput/pdf-parser.h
+index e28fecc2e1..990149c676 100644
+--- a/src/extension/internal/pdfinput/pdf-parser.h
++++ b/src/extension/internal/pdfinput/pdf-parser.h
+@@ -1,4 +1,4 @@
+- /*
++/*
+  * Derived from Gfx.h
+  *
+  * Copyright 1996-2003 Glyph & Cog, LLC
+@@ -287,7 +287,7 @@ private:
+   void opMoveShowText(Object args[], int numArgs);
+   void opMoveSetShowText(Object args[], int numArgs);
+   void opShowSpaceText(Object args[], int numArgs);
+-  void doShowText(GooString *s);
++  void doShowText(const GooString *s);
+ 
+   // XObject operators
+   void opXObject(Object args[], int numArgs);
 diff --git a/src/extension/internal/pdfinput/svg-builder.cpp b/src/extension/internal/pdfinput/svg-builder.cpp
 index 158c5ae068..34918498aa 100644
 --- a/src/extension/internal/pdfinput/svg-builder.cpp
