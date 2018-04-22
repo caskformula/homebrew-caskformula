@@ -1,9 +1,8 @@
 class Inkscape < Formula
   desc "Professional vector graphics editor"
   homepage "https://inkscape.org/"
-  url "https://launchpad.net/inkscape/0.92.x/0.92.2/+download/inkscape-0.92.2.tar.bz2"
-  mirror "https://mirrors.kernel.org/debian/pool/main/i/inkscape/inkscape_0.92.2.orig.tar.bz2"
-  sha256 "a628d0e04c254e9840947e6d866974f92c68ae31631a38b94d9b65e5cd84cfd3"
+  url "https://launchpad.net/inkscape/0.92.x/0.92.3/+download/inkscape-0.92.3.tar.bz2"
+  mirror "https://mirrors.kernel.org/debian/pool/main/i/inkscape/inkscape_0.48.3.1.orig.tar.gz"
   revision 1
 
   head do
