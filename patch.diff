@@ -11,10 +11,32 @@ index 15bc2d746d..b68ad7e7a8 100644
  #if defined(POPPLER_NEW_OBJECT_API)
    if ((obj1 = res->lookupXObject(name)).isNull()) {
  #else
+diff --git a/src/extension/internal/pdfinput/svg-builder.cpp b/src/extension/internal/pdfinput/svg-builder.cpp
+index 158c5ae068..34918498aa 100644
+--- a/src/extension/internal/pdfinput/svg-builder.cpp
++++ b/src/extension/internal/pdfinput/svg-builder.cpp
+@@ -1031,7 +1031,7 @@ void SvgBuilder::updateFont(GfxState *state) {
+     char *font_family = NULL;
+     char *font_style = NULL;
+     char *font_style_lowercase = NULL;
+-    char *plus_sign = strstr(_font_specification, "+");
++    const char *plus_sign = strstr(_font_specification, "+");
+     if (plus_sign) {
+         font_family = g_strdup(plus_sign + 1);
+         _font_specification = plus_sign + 1;
 diff --git a/src/extension/internal/pdfinput/svg-builder.h b/src/extension/internal/pdfinput/svg-builder.h
-index ad15c9c06f..4273101a20 100644
+index ad15c9c06f..93de0fa3bb 100644
 --- a/src/extension/internal/pdfinput/svg-builder.h
 +++ b/src/extension/internal/pdfinput/svg-builder.h
+@@ -81,7 +81,7 @@ struct SvgGlyph {
+     bool style_changed;  // Set to true if style has to be reset
+     SPCSSAttr *style;
+     int render_mode;    // Text render mode
+-    char *font_specification;   // Pointer to current font specification
++    const char *font_specification;   // Pointer to current font specification
+ };
+ 
+ /**
 @@ -203,7 +203,7 @@ private:
  
      SPCSSAttr *_font_style;          // Current font style
