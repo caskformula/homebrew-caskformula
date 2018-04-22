@@ -1,0 +1,26 @@
+diff --git a/src/extension/internal/pdfinput/pdf-parser.cpp b/src/extension/internal/pdfinput/pdf-parser.cpp
+index 15bc2d746d..b68ad7e7a8 100644
+--- a/src/extension/internal/pdfinput/pdf-parser.cpp
++++ b/src/extension/internal/pdfinput/pdf-parser.cpp
+@@ -2732,7 +2732,7 @@ void PdfParser::opXObject(Object args[], int /*numArgs*/)
+ {
+   Object obj1, obj2, obj3, refObj;
+ 
+-  char *name = args[0].getName();
++  const char *name = args[0].getName();
+ #if defined(POPPLER_NEW_OBJECT_API)
+   if ((obj1 = res->lookupXObject(name)).isNull()) {
+ #else
+diff --git a/src/extension/internal/pdfinput/svg-builder.h b/src/extension/internal/pdfinput/svg-builder.h
+index ad15c9c06f..4273101a20 100644
+--- a/src/extension/internal/pdfinput/svg-builder.h
++++ b/src/extension/internal/pdfinput/svg-builder.h
+@@ -203,7 +203,7 @@ private:
+ 
+     SPCSSAttr *_font_style;          // Current font style
+     GfxFont *_current_font;
+-    char *_font_specification;
++    const char *_font_specification;
+     double _font_scaling;
+     bool _need_font_update;
+     Geom::Affine _text_matrix;
