@@ -15,6 +15,7 @@ class Glibmm < Formula
   stable do
     patch do 
       url "https://raw.githubusercontent.com/macports/macports-ports/e864b2340be9ef003d8ff4aef92e7151d06287dd/devel/glibmm/files/0001-ustring-Fix-wchar-conversion-on-macOS-with-libc.patch"
+      sha256 "5d7e21a9c1692ffd360648765f84e79fd143b13e84fa3c3fd681bff17899fbf6"
     end
   end
 
