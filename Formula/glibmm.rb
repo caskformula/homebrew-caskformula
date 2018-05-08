@@ -4,13 +4,6 @@ class Glibmm < Formula
   url "https://download.gnome.org/sources/glibmm/2.56/glibmm-2.56.0.tar.xz"
   sha256 "6e74fcba0d245451c58fc8a196e9d103789bc510e1eee1a9b1e816c5209e79a9"
   revision 1
-
-  bottle do
-    cellar :any
-    sha256 "611cb45e6240e9fc41a1e38fdcfdaa303e4b5b8a98ef7c40f497d59490c2c3bc" => :high_sierra
-    sha256 "46991472465a244c04cbbef29e15d5194bc9af3a66b1cae0b277779882cdd075" => :sierra
-    sha256 "25b785a0b869d958dc61f782413c5af4e65d742c8aaf3afe30240b764651d235" => :el_capitan
-  end
   
   stable do
     patch do 
