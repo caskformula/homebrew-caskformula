@@ -13,7 +13,7 @@ class Inkscape < Formula
   stable do
     patch do 
       url "https://raw.githubusercontent.com/weikengchen/homebrew-caskformula/master/patch.diff"
-      sha256 "ae09364355c6d13fcaea078ce4cb68f622c9f58fda063ba3ccd4ed54b50d9374"
+      sha256 "b4cdb0ab36081df14c98d2b70585cad4ef02e25bc2f1faae00e76eef607bb1fd"
     end
   end
 
