@@ -14,7 +14,14 @@ class Inkscape < Formula
   stable do
     patch do
       url "https://gitlab.com/inkscape/inkscape/commit/93ccf03162cd2e46d962822d5507865f3451168c.diff"
-      sha256 "1f037cc29cee8e0c60ab4753d4151741c8170e4849129bac68fdc60925eb971d"
+      sha256 "7ce4f70f1cb03cd0bab7dc94821a89bf71600bd59c763ae0d78c48f33db3d9ac"
+    end
+  end
+  
+  stable do
+    patch do
+      url "https://github.com/caskformula/homebrew-caskformula/files/2559134/inkscape-0.92-poppler-0.71-diff.txt"
+      sha256 "a801178a010d70368516e1b636f4e938dd8f9a3149edf3d927f7da58ba896226"
     end
   end
 
