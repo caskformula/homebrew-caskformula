@@ -12,7 +12,7 @@ index e3115620e3..8330076bc2 100644
          sp_repr_get_double(prefs, "cropTo", &crop_setting);
  
 diff --git a/src/extension/internal/pdfinput/pdf-parser.cpp b/src/extension/internal/pdfinput/pdf-parser.cpp
-index 604b7f8079..626f51e939 100644
+index 604b7f8079..5a4d5a07e3 100644
 --- a/src/extension/internal/pdfinput/pdf-parser.cpp
 +++ b/src/extension/internal/pdfinput/pdf-parser.cpp
 @@ -38,7 +38,6 @@ extern "C" {
@@ -53,6 +53,15 @@ index 604b7f8079..626f51e939 100644
      clip(clipNone),
      ignoreUndef(0),
      baseMatrix(),
+@@ -318,7 +317,7 @@ PdfParser::PdfParser(XRef *xrefA,
+   builder->setDocumentSize(Inkscape::Util::Quantity::convert(state->getPageWidth(), "pt", "px"),
+                            Inkscape::Util::Quantity::convert(state->getPageHeight(), "pt", "px"));
+ 
+-  double *ctm = state->getCTM();
++  const double *ctm = state->getCTM();
+   double scaledCTM[6];
+   for (int i = 0; i < 6; ++i) {
+     baseMatrix[i] = ctm[i];
 @@ -353,14 +352,14 @@ PdfParser::PdfParser(XRef *xrefA,
  PdfParser::PdfParser(XRef *xrefA,
  		     Inkscape::Extension::Internal::SvgBuilder *builderA,
@@ -97,6 +106,15 @@ index 604b7f8079..626f51e939 100644
  {
    Object obj;
    Object args[maxArgs];
+@@ -572,7 +571,7 @@ const char *PdfParser::getPreviousOperator(unsigned int look_back) {
+ 
+ void PdfParser::execOp(Object *cmd, Object args[], int numArgs) {
+   PdfOperator *op;
+-  char *name;
++  const char *name;
+   Object *argPtr;
+   int i;
+ 
 @@ -640,7 +639,7 @@ PdfOperator* PdfParser::findOp(char *name) {
    return &opTab[a];
  }
@@ -337,6 +355,15 @@ index 604b7f8079..626f51e939 100644
            }
          }
          i++;
+@@ -1994,7 +1993,7 @@ void PdfParser::doFunctionShFill1(GfxFunctionShading *shading,
+   GfxColor color0M, color1M, colorM0, colorM1, colorMM;
+   GfxColor colors2[4];
+   double functionColorDelta = colorDeltas[pdfFunctionShading-1];
+-  double *matrix;
++  const double *matrix;
+   double xM, yM;
+   int nComps, i, j;
+ 
 @@ -2174,7 +2173,7 @@ void PdfParser::doPatchMeshShFill(GfxPatchMeshShading *shading) {
    }
  }
