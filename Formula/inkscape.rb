@@ -2,6 +2,7 @@ class Inkscape < Formula
   desc "Professional vector graphics editor"
   homepage "https://inkscape.org/"
   url "https://launchpad.net/inkscape/0.92.x/0.92.3/+download/inkscape-0.92.3.tar.bz2"
+  sha256 "063296c05a65d7a92a0f627485b66221487acfc64a24f712eb5237c4bd7816b2"
   mirror "https://mirrors.kernel.org/debian/pool/main/i/inkscape/inkscape_0.48.3.1.orig.tar.gz"
   revision 1
 
