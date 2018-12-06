@@ -1,3 +1,3 @@
-This is a temporary fix for inkscape.
+## Non-xQuartz version of Inkscape 0.92.3
 
-The fix on `const char *` is given in the `patch.diff`.
+This is a temporary fix for inkscape.
