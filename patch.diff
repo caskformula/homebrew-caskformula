@@ -12,7 +12,7 @@ index e3115620e3..8330076bc2 100644
          sp_repr_get_double(prefs, "cropTo", &crop_setting);
  
 diff --git a/src/extension/internal/pdfinput/pdf-parser.cpp b/src/extension/internal/pdfinput/pdf-parser.cpp
-index 604b7f8079..db8f3fc5c5 100644
+index 604b7f8079..626f51e939 100644
 --- a/src/extension/internal/pdfinput/pdf-parser.cpp
 +++ b/src/extension/internal/pdfinput/pdf-parser.cpp
 @@ -38,7 +38,6 @@ extern "C" {
@@ -289,7 +289,7 @@ index 604b7f8079..db8f3fc5c5 100644
      break;
    default:
      error(errUnimplemented, getPos(), "Unimplemented pattern type ({0:d}) in stroke",
-@@ -1749,7 +1748,7 @@ void PdfParser::doPatternStrokeFallback() {
+@@ -1749,10 +1748,10 @@ void PdfParser::doPatternStrokeFallback() {
  }
  
  void PdfParser::doShadingPatternFillFallback(GfxShadingPattern *sPat,
@@ -297,7 +297,11 @@ index 604b7f8079..db8f3fc5c5 100644
 +                                             bool stroke, bool eoFill) {
    GfxShading *shading;
    GfxPath *savedPath;
-   double *ctm, *btm, *ptm;
+-  double *ctm, *btm, *ptm;
++  const double *ctm, *btm, *ptm;
+   double m[6], ictm[6], m1[6];
+   double xMin, yMin, xMax, yMax;
+   double det;
 @@ -1863,7 +1862,7 @@ void PdfParser::opShFill(Object args[], int /*numArgs*/)
    double xTemp, yTemp;
    double gradientTransform[6];
