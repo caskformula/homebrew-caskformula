@@ -12,7 +12,7 @@ index e3115620e3..8330076bc2 100644
          sp_repr_get_double(prefs, "cropTo", &crop_setting);
  
 diff --git a/src/extension/internal/pdfinput/pdf-parser.cpp b/src/extension/internal/pdfinput/pdf-parser.cpp
-index 604b7f8079..0f13dfcf52 100644
+index 604b7f8079..c1efb7f95a 100644
 --- a/src/extension/internal/pdfinput/pdf-parser.cpp
 +++ b/src/extension/internal/pdfinput/pdf-parser.cpp
 @@ -38,7 +38,6 @@ extern "C" {
@@ -677,6 +677,15 @@ index 604b7f8079..0f13dfcf52 100644
    
      // skip 'EI' tag
      int c1 = str->getUndecodedStream()->getChar();
+@@ -3687,7 +3686,7 @@ Stream *PdfParser::buildImageStream() {
+ 	break;
+       }
+ #if defined(POPPLER_NEW_OBJECT_API)
+-      dict.dictAdd(key, std::move(obj));
++      dict.dictAdd(obj.getName(), std::move(obj));
+     }
+     obj = parser->getObj();
+ #else
 @@ -3710,10 +3709,10 @@ Stream *PdfParser::buildImageStream() {
  
    // make stream
