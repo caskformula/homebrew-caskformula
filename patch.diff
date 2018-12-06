@@ -38,7 +38,7 @@ index 604b7f8079..ffba6a28ab 100644
    if ((obj1 = res->lookupXObject(name)).isNull()) {
  #else
 diff --git a/src/extension/internal/pdfinput/pdf-parser.h b/src/extension/internal/pdfinput/pdf-parser.h
-index e28fecc2e1..990149c676 100644
+index e28fecc2e1..bb17069b08 100644
 --- a/src/extension/internal/pdfinput/pdf-parser.h
 +++ b/src/extension/internal/pdfinput/pdf-parser.h
 @@ -1,4 +1,4 @@
@@ -47,7 +47,72 @@ index e28fecc2e1..990149c676 100644
   * Derived from Gfx.h
   *
   * Copyright 1996-2003 Glyph & Cog, LLC
-@@ -287,7 +287,7 @@ private:
+@@ -136,7 +136,7 @@ public:
+   virtual ~PdfParser();
+ 
+   // Interpret a stream or array of streams.
+-  void parse(Object *obj, GBool topLevel = gTrue);
++  void parse(Object *obj, bool topLevel = true);
+ 
+   // Save graphics state.
+   void saveState();
+@@ -154,12 +154,12 @@ private:
+ 
+   XRef *xref;			// the xref table for this PDF file
+   SvgBuilder *builder;          // SVG generator
+-  GBool subPage;		// is this a sub-page object?
+-  GBool printCommands;		// print the drawing commands (for debugging)
++  bool subPage;			// is this a sub-page object?
++  bool printCommands;		// print the drawing commands (for debugging)
+   GfxResources *res;		// resource stack
+ 
+   GfxState *state;		// current graphics state
+-  GBool fontChanged;		// set if font or text matrix has changed
++  bool fontChanged;		// set if font or text matrix has changed
+   GfxClipType clip;		// do a clip?
+   int ignoreUndef;		// current BX/EX nesting level
+   double baseMatrix[6];		// default matrix for most recent
+@@ -183,10 +183,10 @@ private:
+   OpHistoryEntry *popOperator();
+   const char *getPreviousOperator(unsigned int look_back=1);    // returns the nth previous operator's name
+ 
+-  void go(GBool topLevel);
++  void go(bool topLevel);
+   void execOp(Object *cmd, Object args[], int numArgs);
+   PdfOperator *findOp(char *name);
+-  GBool checkArg(Object *arg, TchkType type);
++  bool checkArg(Object *arg, TchkType type);
+   int getPos();
+ 
+   // graphics state operators
+@@ -200,9 +200,9 @@ private:
+   void opSetMiterLimit(Object args[], int numArgs);
+   void opSetLineWidth(Object args[], int numArgs);
+   void opSetExtGState(Object args[], int numArgs);
+-  void doSoftMask(Object *str, GBool alpha,
++  void doSoftMask(Object *str, bool alpha,
+ 		  GfxColorSpace *blendingColorSpace,
+-		  GBool isolated, GBool knockout,
++		  bool isolated, bool knockout,
+ 		  Function *transferFunc, GfxColor *backdropColor);
+   void opSetRenderingIntent(Object args[], int numArgs);
+ 
+@@ -239,11 +239,11 @@ private:
+   void opCloseFillStroke(Object args[], int numArgs);
+   void opEOFillStroke(Object args[], int numArgs);
+   void opCloseEOFillStroke(Object args[], int numArgs);
+-  void doFillAndStroke(GBool eoFill);
+-  void doPatternFillFallback(GBool eoFill);
++  void doFillAndStroke(bool eoFill);
++  void doPatternFillFallback(bool eoFill);
+   void doPatternStrokeFallback();
+   void doShadingPatternFillFallback(GfxShadingPattern *sPat,
+-                                    GBool stroke, GBool eoFill);
++                                    bool stroke, bool eoFill);
+   void opShFill(Object args[], int numArgs);
+   void doFunctionShFill(GfxFunctionShading *shading);
+   void doFunctionShFill1(GfxFunctionShading *shading,
+@@ -287,17 +287,17 @@ private:
    void opMoveShowText(Object args[], int numArgs);
    void opMoveSetShowText(Object args[], int numArgs);
    void opShowSpaceText(Object args[], int numArgs);
@@ -56,6 +121,20 @@ index e28fecc2e1..990149c676 100644
  
    // XObject operators
    void opXObject(Object args[], int numArgs);
+-  void doImage(Object *ref, Stream *str, GBool inlineImg);
++  void doImage(Object *ref, Stream *str, bool inlineImg);
+   void doForm(Object *str);
+   void doForm1(Object *str, Dict *resDict, double *matrix, double *bbox,
+-	       GBool transpGroup = gFalse, GBool softMask = gFalse,
++	       bool transpGroup = false, bool softMask = false,
+ 	       GfxColorSpace *blendingColorSpace = NULL,
+-	       GBool isolated = gFalse, GBool knockout = gFalse,
+-	       GBool alpha = gFalse, Function *transferFunc = NULL,
++	       bool isolated = false, GBool knockout = false,
++	       bool alpha = false, Function *transferFunc = NULL,
+ 	       GfxColor *backdropColor = NULL);
+ 
+   // in-line image operators
 diff --git a/src/extension/internal/pdfinput/svg-builder.cpp b/src/extension/internal/pdfinput/svg-builder.cpp
 index a448be6397..df7740eced 100644
 --- a/src/extension/internal/pdfinput/svg-builder.cpp
