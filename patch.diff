@@ -1,5 +1,18 @@
+diff --git a/src/extension/internal/pdfinput/pdf-input.cpp b/src/extension/internal/pdfinput/pdf-input.cpp
+index e3115620e3..8330076bc2 100644
+--- a/src/extension/internal/pdfinput/pdf-input.cpp
++++ b/src/extension/internal/pdfinput/pdf-input.cpp
+@@ -793,7 +793,7 @@ PdfInput::open(::Inkscape::Extension::Input * /*mod*/, const gchar * uri) {
+             dlg->getImportSettings(prefs);
+ 
+         // Apply crop settings
+-        PDFRectangle *clipToBox = NULL;
++        const PDFRectangle *clipToBox = NULL;
+         double crop_setting;
+         sp_repr_get_double(prefs, "cropTo", &crop_setting);
+ 
 diff --git a/src/extension/internal/pdfinput/pdf-parser.cpp b/src/extension/internal/pdfinput/pdf-parser.cpp
-index 604b7f8079..87fd9bd111 100644
+index 604b7f8079..0f13dfcf52 100644
 --- a/src/extension/internal/pdfinput/pdf-parser.cpp
 +++ b/src/extension/internal/pdfinput/pdf-parser.cpp
 @@ -38,7 +38,6 @@ extern "C" {
@@ -320,6 +333,15 @@ index 604b7f8079..87fd9bd111 100644
            }
          }
          i++;
+@@ -2174,7 +2173,7 @@ void PdfParser::doPatchMeshShFill(GfxPatchMeshShading *shading) {
+   }
+ }
+ 
+-void PdfParser::fillPatch(GfxPatch *patch, int nComps, int depth) {
++void PdfParser::fillPatch(const GfxPatch *patch, int nComps, int depth) {
+   GfxPatch patch00 = blankPatch();
+   GfxPatch patch01 = blankPatch();
+   GfxPatch patch10 = blankPatch();
 @@ -2348,7 +2347,7 @@ void PdfParser::opBeginText(Object /*args*/[], int /*numArgs*/)
    state->setTextMat(1, 0, 0, 1, 0, 0);
    state->textMoveTo(0, 0);
@@ -669,7 +691,7 @@ index 604b7f8079..87fd9bd111 100644
  #endif
  
 diff --git a/src/extension/internal/pdfinput/pdf-parser.h b/src/extension/internal/pdfinput/pdf-parser.h
-index e28fecc2e1..6a7b33cc8c 100644
+index e28fecc2e1..e0d9f390db 100644
 --- a/src/extension/internal/pdfinput/pdf-parser.h
 +++ b/src/extension/internal/pdfinput/pdf-parser.h
 @@ -1,4 +1,4 @@
@@ -754,6 +776,15 @@ index e28fecc2e1..6a7b33cc8c 100644
    void opShFill(Object args[], int numArgs);
    void doFunctionShFill(GfxFunctionShading *shading);
    void doFunctionShFill1(GfxFunctionShading *shading,
+@@ -256,7 +256,7 @@ private:
+ 			   double x2, double y2, GfxColor *color2,
+ 			   int nComps, int depth);
+   void doPatchMeshShFill(GfxPatchMeshShading *shading);
+-  void fillPatch(GfxPatch *patch, int nComps, int depth);
++  void fillPatch(const GfxPatch *patch, int nComps, int depth);
+   void doEndPath();
+ 
+   // path clipping operators
 @@ -287,17 +287,17 @@ private:
    void opMoveShowText(Object args[], int numArgs);
    void opMoveSetShowText(Object args[], int numArgs);
