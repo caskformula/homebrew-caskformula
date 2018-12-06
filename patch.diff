@@ -691,7 +691,7 @@ index 604b7f8079..0f13dfcf52 100644
  #endif
  
 diff --git a/src/extension/internal/pdfinput/pdf-parser.h b/src/extension/internal/pdfinput/pdf-parser.h
-index e28fecc2e1..ecb9a0ef17 100644
+index e28fecc2e1..cad4bbd3ab 100644
 --- a/src/extension/internal/pdfinput/pdf-parser.h
 +++ b/src/extension/internal/pdfinput/pdf-parser.h
 @@ -1,4 +1,4 @@
@@ -700,6 +700,15 @@ index e28fecc2e1..ecb9a0ef17 100644
   * Derived from Gfx.h
   *
   * Copyright 1996-2003 Glyph & Cog, LLC
+@@ -96,7 +96,7 @@ struct PdfOperator {
+ struct OpHistoryEntry {
+     const char *name;       // operator's name
+     GfxState *state;        // saved state, NULL if none
+-    GBool executed;         // whether the operator has been executed
++    bool executed;         // whether the operator has been executed
+ 
+     OpHistoryEntry *next;   // next entry on stack
+     unsigned depth;         // total number of entries descending from this
 @@ -127,16 +127,16 @@ public:
  
    // Constructor for regular output.
