@@ -691,7 +691,7 @@ index 604b7f8079..0f13dfcf52 100644
  #endif
  
 diff --git a/src/extension/internal/pdfinput/pdf-parser.h b/src/extension/internal/pdfinput/pdf-parser.h
-index e28fecc2e1..dc328e6e5f 100644
+index e28fecc2e1..ecb9a0ef17 100644
 --- a/src/extension/internal/pdfinput/pdf-parser.h
 +++ b/src/extension/internal/pdfinput/pdf-parser.h
 @@ -1,4 +1,4 @@
@@ -803,13 +803,13 @@ index e28fecc2e1..dc328e6e5f 100644
  	       GfxColorSpace *blendingColorSpace = NULL,
 -	       GBool isolated = gFalse, GBool knockout = gFalse,
 -	       GBool alpha = gFalse, Function *transferFunc = NULL,
-+	       bool isolated = false, GBool knockout = false,
++	       bool isolated = false, bool knockout = false,
 +	       bool alpha = false, Function *transferFunc = NULL,
  	       GfxColor *backdropColor = NULL);
  
    // in-line image operators
 diff --git a/src/extension/internal/pdfinput/svg-builder.cpp b/src/extension/internal/pdfinput/svg-builder.cpp
-index a448be6397..0662574bd8 100644
+index a448be6397..e7efd81423 100644
 --- a/src/extension/internal/pdfinput/svg-builder.cpp
 +++ b/src/extension/internal/pdfinput/svg-builder.cpp
 @@ -625,7 +625,7 @@ gchar *SvgBuilder::_createPattern(GfxPattern *pattern, GfxState *state, bool is_
@@ -839,6 +839,15 @@ index a448be6397..0662574bd8 100644
      sp_repr_set_svg_double(pattern_node, "x", 0.0);
      sp_repr_set_svg_double(pattern_node, "y", 0.0);
      sp_repr_set_svg_double(pattern_node, "width", bbox[2] - bbox[0]);
+@@ -751,7 +751,7 @@ gchar *SvgBuilder::_createTilingPattern(GfxTilingPattern *tiling_pattern,
+  */
+ gchar *SvgBuilder::_createGradient(GfxShading *shading, double *matrix, bool for_shading) {
+     Inkscape::XML::Node *gradient;
+-    Function *func;
++    const Function *func;
+     int num_funcs;
+     bool extend0, extend1;
+ 
 @@ -865,7 +865,7 @@ static bool svgGetShadingColorRGB(GfxShading *shading, double offset, GfxRGB *re
  
  #define INT_EPSILON 8
