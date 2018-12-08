@@ -26,6 +26,7 @@ class Inkscape < Formula
 
   depends_on "gtk+3"
   depends_on "gtkmm3"
+  depends_on "gdl"
 
   needs :cxx11
 
