@@ -41,7 +41,7 @@ class Inkscape < Formula
 
     system "mkdir", "build"
     Dir.chdir("build")
-    system "cmake", "..", *std_cmake_args, " -DWITH_GTK3_EXPERIMENTAL=1"
+    system "cmake", "..", *std_cmake_args, "-DWITH_GTK3_EXPERIMENTAL=1"
     system "make"
     system "make", "install"
   end
