@@ -24,7 +24,7 @@ class Inkscape < Formula
   depends_on "poppler"
   depends_on "potrace"
 
-  depends_on "gtk3"
+  depends_on "gtk+3"
   depends_on "gtkmm"
 
   needs :cxx11
