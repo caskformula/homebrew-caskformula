@@ -4,10 +4,6 @@ class Inkscape < Formula
   url "https://www.chenweikeng.com/inkscape-0.92.x.tar.bz2"
   sha256 "b08fbeb9beda8c46279ef34a59212904a043195262a10fd6098ec6ba756594d5"
 
-  option "branch-0.92", "When used with --HEAD, build from the 0.92.x branch"
-
-  option "with-gtk3", "Build Inkscape with GTK+3 (Experimental)"
-
   depends_on "automake" => :build
   depends_on "cmake" => :build
   depends_on "libtool" => :build
@@ -28,9 +24,8 @@ class Inkscape < Formula
   depends_on "poppler"
   depends_on "potrace"
 
-  depends_on "gtkmm3" if build.with? "gtk3"
-  depends_on "gdl" if build.with? "gtk3"
-  depends_on "gtkmm" if build.without? "gtk3"
+  depends_on "gtk3"
+  depends_on "gtkmm"
 
   needs :cxx11
 
