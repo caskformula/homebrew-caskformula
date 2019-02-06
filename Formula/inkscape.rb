@@ -46,8 +46,6 @@ class Inkscape < Formula
   depends_on "gdl" if build.with? "gtk3"
   depends_on "gtkmm" if build.without? "gtk3"
 
-  needs :cxx11
-
   if MacOS.version < :mavericks
     fails_with :clang do
       cause "inkscape's dependencies will be built with libstdc++ and fail to link."
