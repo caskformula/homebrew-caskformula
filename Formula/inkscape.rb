@@ -46,7 +46,13 @@ class Inkscape < Formula
   depends_on "gdl" if build.with? "gtk3"
   depends_on "gtkmm" if build.without? "gtk3"
 
-  needs :cxx11
+  # Commenting this out because I'm running into this error:
+  # https://github.com/caskformula/homebrew-caskformula/issues/74
+  # This suggestion didn't help:
+  # https://github.com/caskformula/homebrew-caskformula/issues/74#issuecomment-458003296
+  # So I'm trying this one instead:
+  # https://github.com/caskformula/homebrew-caskformula/issues/74#issuecomment-460258586
+  #needs :cxx11
 
   if MacOS.version < :mavericks
     fails_with :clang do
