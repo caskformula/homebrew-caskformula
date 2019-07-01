@@ -2,12 +2,15 @@
 
 caskformula is a tap for providing [homebrew](http://brew.sh/) formulae for software packaged as [casks](https://caskroom.github.io/).
 
+This document has changed.  Homebrew now includes brew-cask as part of the install. Run __brew upgrade__ or __brew cask doctor__ if you run into errors here.
+
 ## Inkscape
 
 ### Install
 
 ```bash
-brew install caskformula/caskformula/inkscape
+brew tap homebrew/cask
+brew cask install inkscape
 ```
 
 * git 0.92.x branch
@@ -19,7 +22,7 @@ brew install caskformula/caskformula/inkscape --HEAD --branch-0.92
 * git master branch
 
 ```bash
-brew install caskformula/caskformula/inkscape --HEAD
+brew cask install inkscape --HEAD
 ```
 
 ### Known issues
